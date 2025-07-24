@@ -35,21 +35,18 @@ Work inside the backend/ folder using your tech stack (Node.js, Express, etc.).
 Once you've added files, commit and push:
 
 
-git add .
-git commit -m "Started backend setup"
-git push
-🔄 Daily Workflow for Both Developers
-Before pushing your code every time, run this to avoid conflicts:
-
-bash
-git pull origin main
-✅ This fetches the latest changes from GitHub so you don’t overwrite your teammate’s work.
-
 ⚠️ Important Push Tip
 Always push from the main project folder, not just from backend/ or frontend/.
 
-bash
 cd learnloop
 git add .
 git commit -m "Your commit message"
 git push
+
+
+🔄 Daily Workflow for Both Developers
+Before pushing your code every time, run this to avoid conflicts:
+
+
+git pull origin main
+✅ This fetches the latest changes from GitHub so you don’t overwrite your teammate’s work.
