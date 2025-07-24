@@ -22,6 +22,11 @@ learnloop/
 ├── frontend/
 └── backend/   ← Work here!
 
+🔄 Daily Workflow (For Both Developers)
+Before pushing every time, always pull the latest code:
+
+- git pull origin main
+
 ✅ After adding your files, commit and push:
 
 - cd learnloop         # Make sure you're at root!
@@ -29,10 +34,6 @@ learnloop/
 - git commit -m "Your commit message"
 - git push
 
-🔄 Daily Workflow (For Both Developers)
-Before pushing every time, always pull the latest code:
-
-- git pull origin main
 
 
 ⚠️ Important Tips
