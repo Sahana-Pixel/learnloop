@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Filter, ArrowRight, Users, Clock, Star, ChevronDown, ChevronUp } from "lucide-react";
 import BackgroundWrapper from "../UI/bg";
 import HeaderSection from "../UI/Header";
+import CircleHeader from "./Groups/CircleHeader";
+import CircleCard from "./Groups/CircleCard";
+
 
 const Circles: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -130,29 +132,13 @@ const Circles: React.FC = () => {
 
         
         {/* Search and Filter Bar */}
-        <div className="flex flex-col md:flex-row gap-4 mb-6">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search circles..."
-              className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </div>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-white"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            <Filter className="h-5 w-5" />
-            <span>Filters</span>
-            {showFilters ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
-          </motion.button>
-        </div>
+       <CircleHeader
+  searchQuery={searchQuery}
+  setSearchQuery={setSearchQuery}
+  showFilters={showFilters}
+  setShowFilters={setShowFilters}
+/>
+
         
         {/* Filter Panel */}
         <AnimatePresence>
@@ -233,90 +219,10 @@ const Circles: React.FC = () => {
       {/* Circles Grid */}
       {sortedCircles.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedCircles.map((circle, index) => (
-          <motion.div
-  key={circle.id}
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.3, delay: index * 0.1 }}
-  whileHover={{ y: -5 }}
-  className="bg-gray-900/20 backdrop-blur-lg border border-gray-700/30 rounded-2xl overflow-hidden shadow-lg hover:shadow-blue-500/10 transition-all"
->
-  <div className="p-6 h-full flex flex-col">
-    {/* Header with recommendation badge */}
-    <div className="flex justify-between items-start mb-4">
-      <h3 className="text-xl font-semibold text-white">{circle.name}</h3>
-      {circle.isRecommended && (
-        <motion.span 
-          className="flex items-center gap-1 px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-xs backdrop-blur-sm"
-          whileHover={{ scale: 1.05 }}
-        >
-          <Star className="h-3 w-3 fill-blue-400" />
-          Recommended
-        </motion.span>
-      )}
-    </div>
-    
-    {/* Description */}
-    <p className="text-gray-300 mb-5 flex-grow">{circle.description}</p>
-    
-    {/* Stats */}
-    <div className="flex items-center justify-between text-sm text-gray-400 mb-5">
-      <span className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-full bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 flex items-center justify-center">
-          <Users className="h-3 w-3 text-blue-400" />
-        </div>
-        {circle.members} members
-      </span>
-      <span className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-full bg-teal-500/10 backdrop-blur-sm border border-teal-500/20 flex items-center justify-center">
-          <Clock className="h-3 w-3 text-teal-400" />
-        </div>
-        Active {circle.active}
-      </span>
-    </div>
-    
-    {/* Tags */}
-    <div className="flex flex-wrap gap-2 mb-6">
-      <motion.span 
-        whileHover={{ y: -1 }}
-        className="px-3 py-1 bg-gray-800/50 backdrop-blur-sm rounded-full text-xs text-white border border-gray-700/50"
-      >
-        {circle.topic}
-      </motion.span>
-      <motion.span 
-        whileHover={{ y: -1 }}
-        className="px-3 py-1 bg-gray-800/50 backdrop-blur-sm rounded-full text-xs text-white border border-gray-700/50"
-      >
-        {circle.level}
-      </motion.span>
-    </div>
-    
-    {/* CTA Button */}
-    <motion.button
-      whileHover={{ x: 3, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg text-white font-medium shadow-md hover:shadow-blue-500/30 transition-all"
-    >
-      Join Circle
-      <ArrowRight className="h-4 w-4" />
-    </motion.button>
-  </div>
+       {sortedCircles.map((circle, index) => (
+  <CircleCard key={circle.id} circle={circle} index={index} />
+))}
 
-  {/* Floating elements */}
-  <motion.div 
-    className="absolute -top-3 -right-3 w-6 h-6 bg-blue-500/10 rounded-full backdrop-blur-sm border border-blue-500/20"
-    animate={{
-      rotate: [0, 15, 0, -15, 0],
-    }}
-    transition={{
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}
-  />
-</motion.div>
-          ))}
         </div>
       ) : (
         <motion.div

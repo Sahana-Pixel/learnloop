@@ -187,38 +187,7 @@ const Mentor: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* CTA Section */}
-        {/* <motion.div 
-          className="text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-        >
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Accelerate Your Growth?</h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
-            Join hundreds of students who've transformed their careers with personalized mentorship.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <motion.a
-              href="#find-mentor"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-lg font-medium shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2"
-            >
-              <User className="h-5 w-5" />
-              Find a Mentor
-            </motion.a>
-            <motion.a
-              href="#become-mentor"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg font-medium flex items-center justify-center gap-2"
-            >
-              <Briefcase className="h-5 w-5" />
-              Become a Mentor
-            </motion.a>
-          </div>
-        </motion.div> */}
+        
       </div>
     </section>
   );
