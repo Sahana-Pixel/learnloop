@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://sahanasacharya55:Pub1dawqaKyEbFYC@cluster0.eb0pad2.mongodb.net/', {
+    await mongoose.connect('', {
       dbName: 'learnloop',
     });
     console.log('MongoDB Connected');
